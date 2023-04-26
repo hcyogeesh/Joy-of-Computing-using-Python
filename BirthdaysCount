@@ -1,0 +1,31 @@
+import random
+
+# Define the number of persons to generate birthdays for
+num_persons = 100
+
+# Define a dictionary to hold the number of persons with each day of birth
+birthdays = {}
+
+# Generate birthdays for each person
+for i in range(num_persons):
+    # Choose a random day of the year (1-365)
+    birthday = random.randint(1, 365)
+    
+    # Add the birthday to the dictionary
+    if birthday in birthdays:
+        birthdays[birthday] += 1
+    else:
+        birthdays[birthday] = 1
+
+# Check how many persons have the same day of birth
+num_duplicates = 0
+for birthday in birthdays:
+    if birthdays[birthday] > 1:
+        num_duplicates += 1
+
+# Print the results
+print("Out of", num_persons, "randomly generated birthdays,")
+if num_duplicates == 0:
+    print("there are no duplicate birthdays.")
+else:
+    print("there are", num_duplicates, "days on which multiple people were born.")
